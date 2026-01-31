@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
                 ghgTimers[i] = 0f;
             }
         }
+
+        // Interval 변환
+        ghgSpawnIntervals[0] = 10 / Mathf.Lerp(460, 700, ghgTimers[0] / 60f);
+        ghgSpawnIntervals[1] = 10 / Mathf.Lerp(44, 35, ghgTimers[1] / 60f);
+        ghgSpawnIntervals[2] = 10 / Mathf.Lerp(15, 10, ghgTimers[2] / 60f);
+        ghgSpawnIntervals[3] = 10 / Mathf.Lerp(3, 30, ghgTimers[3] / 60f);
+        ghgSpawnIntervals[4] = 10 / Mathf.Lerp(2, 4, ghgTimers[4] / 60f);
+        ghgSpawnIntervals[5] = 10 / Mathf.Lerp(2, 10, ghgTimers[5] / 60f);
     }
 
     void SpawnGHG(int index)

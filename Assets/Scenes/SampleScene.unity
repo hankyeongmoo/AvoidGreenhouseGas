@@ -1989,9 +1989,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   ghgPrefabs:
   - {fileID: 6143164689159530779, guid: 0de9531b263cb054e953c47c25bb7d87, type: 3}
+  - {fileID: 7022063205989698721, guid: 0a88e370fc2ae4e42a150944a3569070, type: 3}
+  - {fileID: 8854645056876565950, guid: 4153c1747cb15c849bbdf30336637b59, type: 3}
+  - {fileID: 3744908176721529252, guid: 421866d0d434e84498918c4e8f82d018, type: 3}
+  - {fileID: 3184759485963823405, guid: 582047eb3290431449bf3384f343dfa9, type: 3}
+  - {fileID: 2297766522462250567, guid: 3a6f8afc964580d4387dced0a9f84cc2, type: 3}
   ghgSpawnIntervals:
-  - 0.1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   ghgTimers:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
