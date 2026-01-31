@@ -689,7 +689,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383974374}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0bf008586eddd6f45b166b0b0d96741a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2509,7 +2509,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856447421}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0bf008586eddd6f45b166b0b0d96741a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2525,6 +2525,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1856447426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856447421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae833f144daf4dc449debca884d4e594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  health: 30000
+  rotateSpeed: 100
+  rb: {fileID: 0}
 --- !u!1001 &1942610480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2630,6 +2645,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 67e92826f70d21a4290ab442f90e8dd2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856447424}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 67e92826f70d21a4290ab442f90e8dd2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856447426}
   m_SourcePrefab: {fileID: 100100000, guid: 67e92826f70d21a4290ab442f90e8dd2, type: 3}
 --- !u!1 &2082434603
 GameObject:

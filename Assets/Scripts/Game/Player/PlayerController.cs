@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int health = 30000;
-    public float rotateSpeed = 100f;
+    public float rotateSpeed = 360f * 10f;
     public Rigidbody rb;
 
     void Awake()
@@ -11,17 +11,16 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        
-        
-    }
-
     void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 rotation = Vector3.up * horizontalInput * rotateSpeed * Time.deltaTime;
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
+
+        // 좌우로 구르려면 회전축은 Vector3.back(또는 forward)이 맞습니다.
+        Vector3 torque = Vector3.back * horizontalInput * rotateSpeed * Time.deltaTime;
+
+        // 물리적인 회전력을 가합니다. 
+        // 바닥과 접촉해 있다면 마찰력에 의해 자동으로 좌우로 이동합니다.
+        rb.AddTorque(torque);
     }
 
     void OnTriggerEnter(Collider other)
@@ -42,12 +41,12 @@ public class PlayerController : MonoBehaviour
             health -= 310;
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("HFC"))
+        else if (other.CompareTag("HFCs"))
         {
             health -= Random.Range(140, 11700);
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("PFC"))
+        else if (other.CompareTag("PFCs"))
         {
             health -= Random.Range(6500, 9200);
             Destroy(other.gameObject);
