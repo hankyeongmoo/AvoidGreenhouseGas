@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("GHG Settings")]
     public List<GameObject> ghgPrefabs;
     public List<float> ghgSpawnIntervals;
     public List<float> ghgTimers;
+
+    [Header("Game Settings")]
+    public float gameDuration = 60f; // 1 minute
 
     void FixedUpdate()
     {
@@ -27,6 +31,14 @@ public class GameManager : MonoBehaviour
         ghgSpawnIntervals[3] = 10 / Mathf.Lerp(3, 30, ghgTimers[3] / 60f);
         ghgSpawnIntervals[4] = 10 / Mathf.Lerp(2, 4, ghgTimers[4] / 60f);
         ghgSpawnIntervals[5] = 10 / Mathf.Lerp(2, 10, ghgTimers[5] / 60f);
+
+        // 플레이 시간 제한
+        gameDuration -= Time.deltaTime;
+        if (gameDuration <= 0f)
+        {
+            // 게임 종료 로직 추가
+            Debug.Log("게임 종료!");
+        }
     }
 
     void SpawnGHG(int index)
