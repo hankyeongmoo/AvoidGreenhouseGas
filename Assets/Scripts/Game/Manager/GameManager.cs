@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,14 @@ public class GameManager : MonoBehaviour
     public float gameDuration = 60f; // 1 minute
 
     void FixedUpdate()
+    {
+        if (SceneManager.currentScene == "Game")
+        {
+            Game();
+        }
+    }
+
+    void Game()
     {
         // GHG 스폰
         for (int i = 0; i < ghgPrefabs.Count; i++)
@@ -36,8 +45,8 @@ public class GameManager : MonoBehaviour
         gameDuration -= Time.deltaTime;
         if (gameDuration <= 0f)
         {
-            // 게임 종료 로직 추가
-            Debug.Log("게임 종료!");
+            SceneManager.currentScene = "GoodEnd";
+            Debug.Log("굳 엔딩");
         }
     }
 

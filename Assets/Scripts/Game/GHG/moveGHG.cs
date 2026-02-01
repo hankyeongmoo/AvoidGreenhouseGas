@@ -37,7 +37,8 @@ public class moveGHG : MonoBehaviour
                 // 체력 0 이하 체크
                 if (PlayerController.health <= 0)
                 {
-                    Debug.Log("게임 오버!");
+                    SceneManager.currentScene = "BadEnd";
+                    Debug.Log("배드 엔딩");
                 }
 
                 Destroy(gameObject);
