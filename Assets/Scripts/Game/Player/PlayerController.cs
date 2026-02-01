@@ -2,65 +2,45 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int health = 30000;
+    [Header("플레이어 상태")]
+    static public int health = 30000;
+
+    [Header("이동")]
     public float rotateSpeed = 360f * 10f;
-    public Rigidbody rb;
+    public float dashForce = 300f;
+    public float dashCooldown = 3f;
+    public float timer = 0f;
+    private Rigidbody rb;
+    float horizontalInput;
+
+    [Header("플레이어 위치")]
+    static public Transform playerPos;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        playerPos = transform;
+        horizontalInput = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (timer >= dashCooldown)
+            {
+                rb.AddForce(new Vector3 (horizontalInput, 0.5f, 0f) * dashForce);
+                timer = 0f;
+            }
+        }
 
-        // 좌우로 구르려면 회전축은 Vector3.back(또는 forward)이 맞습니다.
-        Vector3 torque = Vector3.back * horizontalInput * rotateSpeed * Time.deltaTime;
-
-        // 물리적인 회전력을 가합니다. 
-        // 바닥과 접촉해 있다면 마찰력에 의해 자동으로 좌우로 이동합니다.
-        rb.AddTorque(torque);
+        timer += Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
+    void FixedUpdate()
     {
-        // 충돌한 GHG에 따라 체력 감소
-        if (other.CompareTag("CO2"))
-        {
-            health -= 1;
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("CH4"))
-        {
-            health -= 21;
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("N2O"))
-        {
-            health -= 310;
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("HFCs"))
-        {
-            health -= Random.Range(140, 11700);
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("PFCs"))
-        {
-            health -= Random.Range(6500, 9200);
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("SF6"))
-        {
-            health -= 23900;
-            Destroy(other.gameObject);
-        }
-
-        // 체력 0 이하 체크
-        if (health <= 0)
-        {
-            Debug.Log("게임 오버!");
-        }
+        // 좌우 회전 (이동)
+        Vector3 torque = Vector3.back * horizontalInput * rotateSpeed * Time.deltaTime;
+        rb.AddTorque(torque);
     }
 }

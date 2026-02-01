@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 99c9720ab356a0642a771bea13969a05
+  m_OcclusionCullingData: {fileID: 36300000, guid: 1251d5da9b8049c479752daa3914289e, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2537,9 +2537,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae833f144daf4dc449debca884d4e594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  health: 30000
   rotateSpeed: 100
-  rb: {fileID: 0}
+  dashForce: 150
+  dashCooldown: 3
+  timer: 0
 --- !u!1001 &1942610480
 PrefabInstance:
   m_ObjectHideFlags: 0
