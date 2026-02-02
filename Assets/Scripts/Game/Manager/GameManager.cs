@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (SceneManager.currentScene == "Game")
+        if (MySceneManager.currentScene == "Game")
         {
             Game();
         }
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         gameDuration -= Time.deltaTime;
         if (gameDuration <= 0f)
         {
-            SceneManager.currentScene = "GoodEnd";
+            MySceneManager.currentScene = "GoodEnd";
             Debug.Log("굳 엔딩");
         }
     }
