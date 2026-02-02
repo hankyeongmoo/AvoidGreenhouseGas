@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("Game Settings")]
     public float gameDuration = 60f; // 1 minute
 
+    [Header("씬 매니저")]
+    public MySceneManager sceneManager;
+
+
     void FixedUpdate()
     {
         if (MySceneManager.currentScene == "Game")
@@ -45,8 +49,29 @@ public class GameManager : MonoBehaviour
         gameDuration -= Time.deltaTime;
         if (gameDuration <= 0f)
         {
-            MySceneManager.currentScene = "GoodEnd";
+            if (sceneManager != null)
+            {
+                sceneManager.ChangeScene("GoodEnd");
+            }
+            else
+            {
+                Debug.LogError("SceneManager가 연결되지 않았습니다!");
+            }
             Debug.Log("굳 엔딩");
+        }
+
+        // 체력 0 이하 체크
+        if (PlayerController.health <= 0)
+        {
+            if (sceneManager != null)
+            {
+                sceneManager.ChangeScene("BadEnd");
+            }
+            else
+            {
+                Debug.LogError("SceneManager가 연결되지 않았습니다!");
+            }
+            Debug.Log("배드 엔딩");
         }
     }
 

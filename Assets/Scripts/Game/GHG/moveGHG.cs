@@ -33,14 +33,6 @@ public class moveGHG : MonoBehaviour
             {
                 damage = Random.Range(damageMin, damageMax + 1);
                 PlayerController.health -= damage;
-
-                // 체력 0 이하 체크
-                if (PlayerController.health <= 0)
-                {
-                    MySceneManager.currentScene = "BadEnd";
-                    Debug.Log("배드 엔딩");
-                }
-
                 Destroy(gameObject);
             }
         }

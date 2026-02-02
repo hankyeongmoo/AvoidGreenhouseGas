@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("플레이어 상태")]
-    static public int health = 30000;
+    static public int health;
 
     [Header("이동")]
     public float rotateSpeed = 360f * 10f;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        health = 30000;
     }
 
     void Update()

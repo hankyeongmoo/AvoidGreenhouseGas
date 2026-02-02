@@ -107,3 +107,4 @@ MonoBehaviour:
   addSpeed: 3
   damageMax: 21
   damageMin: 21
+  sceneManager: {fileID: 0}
