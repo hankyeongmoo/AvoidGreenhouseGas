@@ -1,3 +1,4 @@
+using Unity.VectorGraphics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -24,17 +25,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        playerPos = transform;
-        horizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (MySceneManager.currentScene == "Game")
         {
-            if (timer >= dashCooldown)
+            playerPos = transform;
+            horizontalInput = Input.GetAxis("Horizontal");
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(new Vector3 (horizontalInput, 0.5f, 0f) * dashForce);
-                timer = 0f;
+                if (timer >= dashCooldown)
+                {
+                    rb.AddForce(new Vector3 (horizontalInput, 0.5f, 0f) * dashForce);
+                    timer = 0f;
+                }
             }
         }
-
+        else if(MySceneManager.currentScene == "Explanation" || MySceneManager.currentScene == "Start")
+        {
+            horizontalInput = 0f;
+            transform.position = new Vector3(0f, 1f, 0f);
+            transform.rotation = Quaternion.identity;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         timer += Time.deltaTime;
     }
 
