@@ -12,7 +12,7 @@ public class MySceneManager : MonoBehaviour
     public CameraMove cameraMove;
 
     // static 변수는 유지하되, 값을 바꿀 때 실행될 함수를 만듭니다.
-    static public string currentScene = "Start";
+    static public string currentScene = "Start"; // Start, Explanation, BadEnd, GoodEnd
 
     void Awake()
     {

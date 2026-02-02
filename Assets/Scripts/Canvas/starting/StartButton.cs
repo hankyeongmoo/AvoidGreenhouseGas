@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour
 {
-    // 인스펙터에서 MySceneManager 오브젝트를 드래그해서 연결하세요!
     public MySceneManager sceneManager;
 
     public void OnStartButtonClicked()
