@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
     public void isStart()
     {
         StopCurrentMove();
-        moveCoroutine = StartCoroutine(MoveCamera(10f));
+        moveCoroutine = StartCoroutine(MoveCamera(15f));
     }
 
     private void StopCurrentMove()
