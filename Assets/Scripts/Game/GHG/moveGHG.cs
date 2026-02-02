@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class moveGHG : MonoBehaviour
@@ -10,6 +11,10 @@ public class moveGHG : MonoBehaviour
     private int damage;
     public int damageMax;
     public int damageMin;
+
+    [Header("효과음")]
+    public AudioSource audioSource;
+    public AudioClip hitSfx;
 
     void FixedUpdate()
     {
@@ -31,9 +36,10 @@ public class moveGHG : MonoBehaviour
             float distance = Vector3.Distance(transform.position, PlayerController.playerPos.position);
             if (distance < 1.5f)
             {
+                audioSource.PlayOneShot(hitSfx);
                 damage = Random.Range(damageMin, damageMax + 1);
                 PlayerController.health -= damage;
-                Destroy(gameObject);
+                transform.position = new Vector3(0f, 3f, -10f);
             }
         }
     }

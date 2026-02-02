@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     float horizontalInput;
 
+    [Header("효과음")]
+    public AudioSource audioSource;
+    public AudioClip dashSfx;
+
     [Header("플레이어 위치")]
     static public Transform playerPos;
 
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
                 if (timer >= dashCooldown)
                 {
                     rb.AddForce(new Vector3 (horizontalInput, 0.5f, 0f) * dashForce);
+                    audioSource.PlayOneShot(dashSfx);
                     timer = 0f;
                 }
             }
