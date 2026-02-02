@@ -25,6 +25,19 @@ public class MySceneManager : MonoBehaviour
         RefreshScene();
     }
 
+    void Update()
+    {
+        if (currentScene == "BadEnd" || currentScene == "GoodEnd")
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ChangeScene("Start");
+                PlayerController.health = 30000;
+                ExplainImage.currentPage = 0;
+            }
+        }
+    }
+
     // 외부(StartButton 등)에서 호출할 함수
     public void ChangeScene(string newScene)
     {

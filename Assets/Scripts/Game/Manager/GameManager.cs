@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
         {
             Game();
         }
+        else if (MySceneManager.currentScene == "Starting")
+        {
+            gameDuration = 60f;
+        }
     }
 
     void Game()
