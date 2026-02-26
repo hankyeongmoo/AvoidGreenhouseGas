@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour
             {
                 if (timer >= dashCooldown)
                 {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
                     rb.AddForce(new Vector3 (horizontalInput, 0.5f, 0f) * dashForce);
+                    rb.AddTorque(Vector3.back * horizontalInput * rotateSpeed * Time.deltaTime);
                     audioSource.PlayOneShot(dashSfx);
                     timer = 0f;
                 }

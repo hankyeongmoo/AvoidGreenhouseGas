@@ -23,7 +23,7 @@ public class moveGHG : MonoBehaviour
         speed += addSpeed * Time.deltaTime;
 
         // 화면 밖으로 나가면 오브젝트 제거
-        if (transform.position.y < -1f)
+        if (transform.position.y < -1f || MySceneManager.currentScene == "BadEnd" || MySceneManager.currentScene == "GoodEnd")
         {
             Destroy(gameObject);
         }

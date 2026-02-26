@@ -109,7 +109,7 @@ MonoBehaviour:
   damageMax: 23900
   damageMin: 23900
   audioSource: {fileID: 3439677609675544633}
-  hitSfx: {fileID: 8300000, guid: be170d30d561c354395d3f99ab8a44fb, type: 3}
+  hitSfx: {fileID: 8300000, guid: af094f8840efcb541b3c9b0eb9226c98, type: 3}
 --- !u!82 &3439677609675544633
 AudioSource:
   m_ObjectHideFlags: 0
